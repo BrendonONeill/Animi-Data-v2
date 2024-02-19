@@ -1,0 +1,152 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-colour: #B57AF0;
+  --secondary-colour: #F09F7A;
+  --backup-colour: #8F829B;
+  --dark-purple: #5C3E7A;
+  --white: #ffff;
+  --dark-white: #efefef;
+  --black: #0000;
+  --light-black: #303030;
+  --active-sidebar: #9285C4;
+  --sidebar-icon: #3A354E;
+
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+body {
+  background-color: var(--dark-white);
+}
+
+
+nav {
+  background-color: var(--main-colour);
+  width: 100vw;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+  z-index: 10;
+}
+
+.nav-burger-section {
+  flex-basis: 10%;
+}
+
+.nav-burger-button {
+  width: 40px;
+  height: 100%;
+  display: flex;
+  padding: 0.2rem;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: var(--white) 2px solid;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: none;
+}
+
+.nav-logo {
+  flex-basis: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-search {
+  flex-basis: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar {
+  background-color: var(--dark-purple);
+  width: 65%;
+  height: 100dvh;
+  position: fixed;
+  z-index: 12;
+  border-radius: 0 5px 5px 0;
+}
+
+.sidebar-header {
+  background-color: var(--sidebar-icon);
+  height: 8.5vh;
+  border-radius: 0 5px 0 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.sidebar-header-button {
+  padding: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: var(--white) 3px solid;
+}
+
+.sidebar-black-card {
+  background-color: rgba(0, 0, 0, 0.692);
+  width: 100vw;
+  height: 100dvh;
+  position: fixed;
+  z-index: 11;
+}
+
+.sidebar-icons {
+  background-color: var(--sidebar-icon);
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.genre {
+  color: var(--white);
+  width: 95%;
+  font-size: 23px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding: 1rem 1rem 1rem 3rem;
+  align-items: center;
+  border-radius: 0 5px 5px 0;
+}
+
+.genre-active {
+  background-color: var(--active-sidebar);
+}
+
+.card {
+  width: 50%;
+  background-color: var(--backup-colour);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+
+
+footer {
+  background-color: var(--dark-purple);
+  padding: 1rem;
+  color: var(--white);
+}
