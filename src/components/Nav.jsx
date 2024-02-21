@@ -1,7 +1,15 @@
 import burger from "../assets/burger.svg"
 import search from "../assets/search.svg"
+import { useNavigate } from "react-router-dom"
 
 function Nav({setDrawer, drawer}) {
+
+  const nav = useNavigate()
+  let searchAnime = (e) => {
+    e.preventDefault()
+    nav("/search/test")
+
+  }
   
   return (
     <nav>
@@ -13,6 +21,12 @@ function Nav({setDrawer, drawer}) {
         </div>
         <div className="nav-search">
             <button><img src={search} width={30} height={30}  alt="" /></button>
+            <div className="searchBox">
+              <form onSubmit={searchAnime}>
+                  <input type="text" placeholder="Pokemon" />
+                <input type="submit" value="Search" />
+              </form>
+            </div>
         </div>
     </nav>
   )

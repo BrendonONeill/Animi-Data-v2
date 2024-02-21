@@ -22,6 +22,15 @@
 
 }
 
+.container {
+  display: flex;
+  background-color: var(--dark-white);
+}
+
+.navbar-section {
+  display: none;
+}
+
 button {
   background-color: transparent;
   border: none;
@@ -29,8 +38,9 @@ button {
   box-shadow: none;
 }
 
-body {
-  background-color: var(--dark-white);
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 
@@ -165,14 +175,17 @@ nav {
   }
 }
 
+.main-section {
+  background-color: var(--dark-white);
+}
+
 .card-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center flex-start;
   align-items: center;
   gap: 1rem;
   padding: 5rem 1.5rem 1rem 1.5rem;
-  background-color: var(--dark-white);
 }
 
 .card {
@@ -183,6 +196,7 @@ nav {
   flex-direction: column;
   align-items: center;
   position: relative;
+  max-width: 164px;
 }
 
 .card-image-container {
@@ -297,4 +311,65 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.searchBox {
+  background-color: var(--dark-purple);
+  position: absolute;
+  bottom: -50px;
+  padding: 1rem;
+  border-radius: 0 0 5px 5px;
+}
+
+
+
+
+@media (min-width: 1280px) {
+
+  .container {
+    gap: 10rem;
+  }
+
+  .nav-burger-button {
+    display: none;
+  }
+
+  .navbar-section {
+    display: block;
+    flex-basis: 15%;
+    height: 100%;
+    background-color: var(--dark-purple);
+    padding: 8rem 0;
+    border-radius: 0 0 5px 0;
+  }
+
+  .main-section {
+    flex-basis: 60%;
+  }
+
+  .card {
+    border: var(--dark-white) 2px solid;
+  }
+
+  .card:hover {
+    border: var(--secondary-colour) 2px solid;
+    position: relative;
+    transform: scale(1.05);
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  .genre:hover {
+    background-color: var(--secondary-colour);
+    color: black;
+    cursor: pointer;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar-black-card {
+    display: none;
+  }
 }
