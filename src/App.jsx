@@ -1,16 +1,15 @@
 import { useState, useEffect, useContext } from 'react'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './App.css'
 import useFetch from './useFetch'
-import Nav from './components/Nav';
-import Anime from './components/Anime';
-import Footer from './components/Footer';
-import Sidebar from './components/Sidebar';
+import TopAnime from './components/TopAnime'
+import Genre from './components/Genre'
+import AnimeInformation from './components/AnimeInformation'
+import SearchAnime from './components/SearchAnime'
 
 export default function App() {
 
   const [data, setData] = useState(null)
-  const [error, setError] = useState(null)
-  const [drawer, setDrawer] = useState(true)
 
   useEffect(() => {
     async function call()
@@ -27,17 +26,26 @@ export default function App() {
     }
     },[])
 
+    const router = createBrowserRouter([
+      {path: "/",
+      element: <TopAnime data={data} />},
+      {
+        path: "/Genre/:id",
+        element: <Genre />
+      },
+      {
+        path: "/:name",
+        element: <AnimeInformation />
+      },
+      {
+        path: "/search/:name",
+        element: <SearchAnime /> 
+      }
+    ]);
 
   return(
     <>
-      <Nav setDrawer={setDrawer} drawer={drawer} />
-      <Sidebar setDrawer={setDrawer} drawer={drawer} />
-      {
-        error ? 
-        <Error />
-        : <Anime anime={data} />
-      }
-      <Footer />
+    <RouterProvider router={router} />
     </>
   )
   
