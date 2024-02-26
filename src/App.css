@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+
 *,
 *::after,
 *::before {
@@ -19,7 +22,10 @@
   --sidebar-icon: #3A354E;
   --card: #d2d4c8;
   --card-dark: #5b5c57;
+}
 
+body {
+  font-family: "Oswald", sans-serif;
 }
 
 .container {
@@ -93,7 +99,6 @@ nav {
   position: fixed;
   z-index: 12;
   border-radius: 0 5px 5px 0;
-  animation: sidebarClosed 2s ease-in-out alternate;
 }
 
 .sidebar-active {
@@ -165,15 +170,7 @@ nav {
   background-color: var(--active-sidebar);
 }
 
-@keyframes sidebarClosed {
-  0% {
-    left: 0;
-  }
 
-  100% {
-    left: -300px
-  }
-}
 
 .main-section {
   background-color: var(--dark-white);
@@ -316,9 +313,32 @@ footer {
 .searchBox {
   background-color: var(--dark-purple);
   position: absolute;
-  bottom: -50px;
+  bottom: -65px;
+  left: 0;
   padding: 1rem;
   border-radius: 0 0 5px 5px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.searchBox-input {
+  width: 75%;
+  padding: 0.5rem;
+  border-radius: 5px 0 0 5px;
+  border: white 2px solid;
+  background-color: var(--dark-white);
+  border-right: none;
+}
+
+.searchBox-button {
+  background-color: transparent;
+  border: white 2px solid;
+  padding: 0.5rem;
+  border-radius: 0 5px 5px 0;
+  outline: none;
+  box-shadow: none;
+  color: white;
 }
 
 

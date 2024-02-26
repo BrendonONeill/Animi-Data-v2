@@ -16,7 +16,7 @@ function Anime({anime}) {
     <>
     <div className='card-grid'>
       {anime.data.map((data) => (
-        <Link to={data.title}><Card key={data.mal_id} data={data} /></Link>
+        <Link to={`anime-information/${data.mal_id}`} key={data.mal_id}><Card data={data} /></Link>
     ))}
     </div>
     <div className='pagination-section'><button className='pagination-button' onClick={() => paginationChange(pagination - 1)}>{pagination - 1}</button><p className='pagination-button pagination-main'>{pagination}</p><button className='pagination-button' onClick={() => paginationChange(pagination + 1)}>{pagination + 1}</button></div>

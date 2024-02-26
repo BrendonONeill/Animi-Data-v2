@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import './App.css'
-import useFetch from './useFetch'
+import { useFetch } from './useFetch'
 import TopAnime from './components/TopAnime'
 import Genre from './components/Genre'
 import AnimeInformation from './components/AnimeInformation'
@@ -16,7 +16,6 @@ export default function App() {
     {
       const {api,err} = await useFetch();
       setData(api)
-      setError(err)
     }
     call()
 
@@ -27,14 +26,16 @@ export default function App() {
     },[])
 
     const router = createBrowserRouter([
-      {path: "/",
-      element: <TopAnime data={data} />},
+      { 
+        path: "/",
+        element: <TopAnime data={data} />
+      },
       {
-        path: "/Genre/:id",
+        path: "/genre/:genre",
         element: <Genre />
       },
       {
-        path: "/:name",
+        path: "anime-information/:id",
         element: <AnimeInformation />
       },
       {
