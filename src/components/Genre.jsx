@@ -14,13 +14,16 @@ function Genre() {
   const [apiData, setApiData] = useState(null);
   const [pagination, setPagination] = useState(1);
 
+  const paginationChange = (number) => {
+    setPagination(number)
+  }
+
   useEffect(() => {
     async function call()
     {
       if(genre)
       {
-        setApiData(null)
-        const {api,err} = await useFetchGenre(genre);
+        const {api,err} = await useFetchGenre(genre,pagination);
         setApiData(api)
       }
     }
@@ -30,7 +33,7 @@ function Genre() {
     {
       console.log("clean up")
     }
-  },[genre])
+  },[genre,pagination])
 
   
   return (
@@ -44,7 +47,7 @@ function Genre() {
     <>
     <div className='card-grid'>
       {apiData.data.map((data) => (
-        <Link to={`anime-information/${data.mal_id}`} key={data.mal_id}><Card data={data} /></Link>
+        <Link to={`../anime-information/${data.mal_id}`} key={data.mal_id}><Card data={data} /></Link>
     ))}
     </div>
     <div className='pagination-section'><button className='pagination-button' onClick={() => paginationChange(pagination - 1)}>{pagination - 1}</button><p className='pagination-button pagination-main'>{pagination}</p><button className='pagination-button' onClick={() => paginationChange(pagination + 1)}>{pagination + 1}</button></div>
