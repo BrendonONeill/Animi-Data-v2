@@ -5,7 +5,7 @@ function Card({data}) {
           <img width={160} height={182} src={data.images.webp.image_url} alt="" />
           </div>
           <div className="card-text-container">
-          <p>{data.title}</p>
+          <p className="card-anime-title">{data.title}</p>
           </div>
           <div className="card-rank">{data.rank}</div>
           <div className="card-score">{data.score}</div>

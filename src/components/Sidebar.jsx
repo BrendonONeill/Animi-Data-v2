@@ -23,7 +23,7 @@ function Sidebar({setDrawer, drawer}) {
         <div>
         {
             genre.map((g) => (
-                <Link to={`/Genre/${g.id}`} key={g.id} ><button  className={g.active ? "genre genre-active" : "genre"}><img className="sidebar-icons" src={g.icon} width={25} height={25} alt="" />{g.name}</button> </Link>
+                <Link to={`/Genre/${g.id}`} key={g.id}><button  className={g.active ? "genre genre-active" : "genre"}><img className="sidebar-icons" src={g.icon} width={25} height={25} alt="" />{g.name}</button> </Link>
             ))
         }
         </div>
