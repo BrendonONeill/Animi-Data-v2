@@ -19,7 +19,6 @@ function SearchAnime() {
     {
       if(name)
       {
-        setApiData(null)
         const {api,err} = await useFetchSearch(name);
         setApiData(api)
       }
@@ -44,7 +43,7 @@ function SearchAnime() {
     <>
     <div className='card-grid'>
       {apiData.data.map((data) => (
-        <Link to={`anime-information/${data.mal_id}`} key={data.mal_id}><Card data={data} /></Link>
+        <Link to={`../anime-information/${data.mal_id}`} key={data.mal_id}><Card data={data} /></Link>
     ))}
     </div>
     </>
