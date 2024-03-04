@@ -15,6 +15,7 @@ This is a website where users can look up anime and see what is considered the b
 - Cleaning up UI
 - Filter types of media
 - Adding more information to the anime information card
+- Testing out the best ways to fetch data with react query
 
 ## Bugs
 - UI bugs on search
