@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from 'react'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './App.css'
 import TopAnime from './components/TopAnime'
 import Genre from './components/Genre'
@@ -25,11 +25,12 @@ export default function App() {
         element: <SearchAnime /> 
       }
     ]);
+    const queryClient = new QueryClient()
 
   return(
-    <>
+    <QueryClientProvider client={queryClient}>
     <RouterProvider router={router} />
-    </>
+    </QueryClientProvider>
   )
   
 }

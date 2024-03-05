@@ -3,9 +3,9 @@ import Card from './card'
 import Navbar from './Navbar'
 import { Link } from 'react-router-dom'
 
-function Anime({anime, pagination, setPagination}) {
+function Anime({anime, pagination, updatePagination}) {
   const paginationChange = (number) => {
-    setPagination(number)
+    updatePagination(number)
   }
 
   return (
@@ -15,7 +15,7 @@ function Anime({anime, pagination, setPagination}) {
     {anime !== null ?
     <>
     <div className='card-grid'>
-      {anime.data.map((data) => (
+      {anime?.data.map((data) => (
         <Link to={`anime-information/${data.mal_id}`} key={data.mal_id} className='card-link'><Card data={data} /></Link>
     ))}
     </div>

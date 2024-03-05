@@ -3,7 +3,7 @@ import burger from "../assets/burger.svg"
 import search from "../assets/search.svg"
 import { useNavigate } from "react-router-dom"
 
-function Nav({setDrawer, drawer}) {
+function Nav({updateDrawer, drawer}) {
   const [searchValue, setSearchValue] = useState("")
   const [searchBox, setSearchBox] = useState(false)
 
@@ -21,7 +21,7 @@ function Nav({setDrawer, drawer}) {
   return (
     <nav>
         <div className="nav-burger-section">
-        <button className="nav-burger-button" onClick={() => setDrawer(!drawer)}><img src={burger} width={30} height={30}  alt="" /></button>
+        <button className="nav-burger-button" onClick={() => updateDrawer()}><img src={burger} width={30} height={30}  alt="" /></button>
         </div>
         <div className="nav-logo">
         <h1>Animi-Data</h1>

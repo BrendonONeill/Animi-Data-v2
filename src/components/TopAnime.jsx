@@ -2,36 +2,33 @@ import Nav from './Nav';
 import Anime from './Anime';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
-import { useState, useEffect} from 'react'
-import { useFetch } from '../useFetch'
+import { useEffect} from 'react'
+import  {useZustand} from '../context/Zustand';
+import { useFetch} from '../useFetch'
+import { useQuery} from "@tanstack/react-query"
 
 function TopAnime() {
-  const [error, setError] = useState(null)
-  const [drawer, setDrawer] = useState(true)
-  const [data, setData] = useState(null)
-  const [pagination, setPagination] = useState(1)
+  const pagination = useZustand((state) => state.pagination)
+  const storedData = useZustand((state) => state.data)
+  const drawer = useZustand((state) => state.drawer)
+  const updateData = useZustand((state) => state.updateData)
+  const updateDrawer = useZustand((state) => state.updateDrawerActive)
+  const updatePagination = useZustand((state) => state.updatePagination)
+
+  const {data,isError,isLoading,isSuccess} = useQuery({ queryKey: ['main', pagination], queryFn: () => useFetch(pagination), retry: 2})
 
   useEffect(() => {
-    async function call()
-    {
-      const {api,err} = await useFetch(pagination);
-      setData(api)
-    }
-    call()
-    return () =>
-    {
-      console.log("clean up")
-    }
-  },[pagination])
+      updateData(data)
+  },[data])
+
 
   return (
     <>
-    <Nav setDrawer={setDrawer} drawer={drawer} />
-    <Sidebar setDrawer={setDrawer} drawer={drawer} />
+    <Nav updateDrawer={updateDrawer} drawer={drawer} />
+    <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     {
-      error ? 
-      <Error />
-      : <Anime anime={data} pagination={pagination} setPagination={setPagination} />
+      isError ? <Error /> :
+      storedData ? <Anime anime={storedData} pagination={pagination}  updatePagination={updatePagination} /> : null
     }
     <Footer />
     </>
