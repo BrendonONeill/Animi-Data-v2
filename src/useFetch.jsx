@@ -3,13 +3,11 @@ export async function useFetch(pagination) {
         const res = await fetch(`https://api.jikan.moe/v4/top/anime?page=${pagination}&sfw`)
        if(res.ok)
        {
-        const data = await res.json()
-        return {api:data, err:null}
+        return res.json()
        }
        } 
     catch (err) {
-        console.error(err)
-        return {api:null, err:err}
+        return res.json()
     }
 }
 
@@ -18,13 +16,11 @@ export async function useFetchGenre(genre,pagination) {
         const res = await fetch(`https://api.jikan.moe/v4/anime?genres=${genre}&page=${pagination}&sfw&order_by=score&sort=desc`)
        if(res.ok)
        {
-        const data = await res.json()
-        return {api:data, err:null}
+        return res.json()
        }
        } 
     catch (err) {
-        console.error(err)
-        return {api:null, err:err}
+        return res.josn()
     }
 }
 
@@ -33,13 +29,11 @@ export async function useFetchSearch(searchWord) {
         const res = await fetch(`https://api.jikan.moe/v4/anime?order_by=score&sort=desc&sfw&q=${searchWord}`)
        if(res.ok)
        {
-        const data = await res.json()
-        return {api:data, err:null}
+        return res.json()
        }
        } 
     catch (err) {
-        console.error(err)
-        return {api:null, err:err}
+        return res.json()
     }
 }
 
@@ -50,12 +44,10 @@ export async function useFetchAnimeInformation(id) {
         const res = await fetch(`https://api.jikan.moe/v4/anime/${id}/full`)
        if(res.ok)
        {
-        const data = await res.json()
-        return {api:data, err:null}
+        return res.json()
        }
        } 
     catch (err) {
-        console.error(err)
-        return {api:null, err:err}
+        return res.json()
     }
 }

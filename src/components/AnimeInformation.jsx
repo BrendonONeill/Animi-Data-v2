@@ -1,81 +1,76 @@
 import { useParams } from "react-router-dom"
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from './Navbar'
 import Nav from './Nav';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 import { useFetchAnimeInformation } from "../useFetch";
+import  {useZustand} from '../context/Zustand';
+import { useQuery} from "@tanstack/react-query"
 
 function AnimeInformation() {
   const {id} = useParams();
-  const [drawer, setDrawer] = useState(true);
-  const [apiData, setApiData] = useState(null);
+
+  const storedData = useZustand((state) => state.animeInformation)
+  const drawer = useZustand((state) => state.drawer)
+  const updateData = useZustand((state) => state.updateAnimeInformation)
+  const updateDrawer = useZustand((state) => state.updateDrawerActive)
+
+  const {data,isError,isLoading,isSuccess} = useQuery({ queryKey: ['anime', id], queryFn: () => useFetchAnimeInformation(id), retry: 2})
+
+
 
   useEffect(() => {
-    async function call()
-    {
-      if(id)
-      {
-        const {api,err} = await useFetchAnimeInformation(id);
-        setApiData(api.data)
-        console.log(api)
-      }
-    }
-    call()
-
-    return () =>
-    {
-      console.log("clean up")
-    }
-  },[])
+    updateData(data?.data)
+  },[data])
 
   return (
     <>
-    <Nav setDrawer={setDrawer} drawer={drawer} />
-    <Sidebar setDrawer={setDrawer} drawer={drawer} />
+    <Nav updateDrawer={updateDrawer} drawer={drawer} />
+    <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     <div className="container">
     <Navbar />
     <div className='main-section'>
     
     <div className="animeInformation-container">
-      {apiData ?
+      {storedData ?
       <div className="animeInformation">
       
-      <img width={240} height={262} src={apiData.images.webp.image_url} alt="" />
-      <p>{apiData.title}</p>
-      <p>{apiData.title_japanese}</p>
+      <img width={240} height={262} src={storedData?.images.webp.image_url} alt="" />
+      <p>{storedData.title}</p>
+      <p>{storedData.title_japanese}</p>
 
       <div className="animeInformation-grid">
         <div className="animeInformation-grid-header"><p>Score</p></div>
         <div className="animeInformation-grid-header"><p>Ranked</p></div>
         <div className="animeInformation-grid-header"><p>Popularity</p></div>
-        <div><p>{apiData.score}</p></div>
-        <div><p>{apiData.rank}</p></div>
-        <div><p>{apiData.popularity}</p></div>
+        <div><p>{storedData.score}</p></div>
+        <div><p>{storedData.rank}</p></div>
+        <div><p>{storedData.popularity}</p></div>
         <div className="animeInformation-grid-header"><p>Type</p></div>
         <div className="animeInformation-grid-header"><p>Episodes</p></div>
         <div className="animeInformation-grid-header"><p>Year</p></div>
-        <div><p>{apiData.type}</p></div>
-        <div><p>{apiData.episodes}</p></div>
-        <div><p>{apiData.year}</p></div>
+        <div><p>{storedData.type}</p></div>
+        <div><p>{storedData.episodes}</p></div>
+        <div><p>{storedData.year}</p></div>
       </div>
 
       <div className="animeInformation-grid-text">
-      <p>Rating: {apiData.rating}</p>
+      <p>Rating: {storedData.rating}</p>
       <p>Studios:</p>
       <div className="animeInformation-array-flex">
-      {apiData.studios.map((studio) => (
+      {storedData.studios.map((studio) => (
         <p className="animeInformation-array">{studio.name}</p>
       ))}
       </div>
       <p>Genres:</p>
       <div className="animeInformation-array-flex">
-      {apiData.genres.map((genre) => (
+      {storedData.genres.map((genre) => (
         <p className="animeInformation-array">{genre.name}</p>
       ))}
       </div>
       <p>Synopsis</p>
-      <p>{apiData.synopsis}</p>
+      <p>{storedData.synopsis}</p>
       </div>
       </div>:
       null}

@@ -5,48 +5,43 @@ import Nav from './Nav';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 import { useFetchGenre } from "../useFetch";
+import  {useZustand} from '../context/Zustand';
+import { useQuery} from "@tanstack/react-query"
 import { Link } from "react-router-dom";
 import Card from './card'
 
 function Genre() {
   const {genre} = useParams();
-  const [drawer, setDrawer] = useState(true);
-  const [apiData, setApiData] = useState(null);
-  const [pagination, setPagination] = useState(1);
+
+  const pagination = useZustand((state) => state.pagination)
+  const storedData = useZustand((state) => state.data)
+  const drawer = useZustand((state) => state.drawer)
+  const updateData = useZustand((state) => state.updateData)
+  const updateDrawer = useZustand((state) => state.updateDrawerActive)
+  const updatePagination = useZustand((state) => state.updatePagination)
+
+  const {data,isError,isLoading,isSuccess} = useQuery({ queryKey: ['genre', genre, pagination], queryFn: () => useFetchGenre(genre,pagination), retry: 2})
 
   const paginationChange = (number) => {
-    setPagination(number)
+    updatePagination(number)
   }
 
   useEffect(() => {
-    async function call()
-    {
-      if(genre)
-      {
-        const {api,err} = await useFetchGenre(genre,pagination);
-        setApiData(api)
-      }
-    }
-    call()
-
-    return () =>
-    {
-      console.log("clean up")
-    }
-  },[genre,pagination])
+      updateData(data)
+  },[data])
 
   
   return (
     <>
-    <Nav setDrawer={setDrawer} drawer={drawer} />
-    <Sidebar setDrawer={setDrawer} drawer={drawer} />
+    <Nav updateDrawer={updateDrawer} drawer={drawer} />
+    <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     <div className="container">
     <Navbar />
     <div className='main-section'>
-    {apiData !== null ?
+    {storedData !== null ?
     <>
     <div className='card-grid'>
-      {apiData.data.map((data) => (
+      {storedData?.data.map((data) => (
         <Link to={`../anime-information/${data.mal_id}`} key={data.mal_id}><Card data={data} /></Link>
     ))}
     </div>
