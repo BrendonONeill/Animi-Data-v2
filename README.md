@@ -10,8 +10,6 @@ This is a website where users can look up anime and see what is considered the b
 
 
 ## Working on
-- Using react query for fetching
-- Context handling with Zustand
 - Cleaning up UI
 - Filter types of media
 - Adding more information to the anime information card
