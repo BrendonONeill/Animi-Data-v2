@@ -1,7 +1,7 @@
 import { useState } from "react"
 import burger from "../assets/burger.svg"
 import search from "../assets/search.svg"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 function Nav({updateDrawer, drawer}) {
   const [searchValue, setSearchValue] = useState("")
@@ -24,7 +24,7 @@ function Nav({updateDrawer, drawer}) {
         <button className="nav-burger-button" onClick={() => updateDrawer()}><img src={burger} width={30} height={30}  alt="" /></button>
         </div>
         <div className="nav-logo">
-        <h1>Animi-Data</h1>
+        <Link to={"../"}><h1>Animi-Data</h1></Link>
         </div>
         <div className="nav-search">
             <button onClick={() => setSearchBox(!searchBox)}><img src={search} width={30} height={30}  alt="" /></button>

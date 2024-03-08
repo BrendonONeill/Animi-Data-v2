@@ -56,20 +56,20 @@ function AnimeInformation() {
       </div>
 
       <div className="animeInformation-grid-text">
-      <p>Rating: {storedData.rating}</p>
-      <p>Studios:</p>
+      <p><span className="animeInfo-header-different">Rating: </span> {storedData.rating}</p>
+      <p className="animeInfo-header">Studios:</p>
       <div className="animeInformation-array-flex">
       {storedData.studios.map((studio) => (
         <p className="animeInformation-array">{studio.name}</p>
       ))}
       </div>
-      <p>Genres:</p>
+      <p className="animeInfo-header">Genres:</p>
       <div className="animeInformation-array-flex">
       {storedData.genres.map((genre) => (
         <p className="animeInformation-array">{genre.name}</p>
       ))}
       </div>
-      <p>Synopsis</p>
+      <p className="animeInfo-header">Synopsis:</p>
       <p>{storedData.synopsis}</p>
       </div>
       </div>:
