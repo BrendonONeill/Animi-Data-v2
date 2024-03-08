@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Error({err}) {
+function Error() {
   return (
-    <>
-    <h1>{err}</h1>
-    </>
+    <div>
+      <h2>There was an Error</h2>
+    </div>
   )
 }
 

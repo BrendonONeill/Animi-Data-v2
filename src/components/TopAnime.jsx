@@ -27,6 +27,7 @@ function TopAnime() {
     <Nav updateDrawer={updateDrawer} drawer={drawer} />
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     {
+      isLoading ? <div style={{height: "100dvh"}}><h1>Loading......</h1> </div> :
       isError ? <Error /> :
       storedData ? <Anime anime={storedData} pagination={pagination}  updatePagination={updatePagination} /> : null
     }
