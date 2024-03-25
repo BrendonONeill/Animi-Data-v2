@@ -60,13 +60,13 @@ function AnimeInformation() {
       <p className="animeInfo-header">Studios:</p>
       <div className="animeInformation-array-flex">
       {storedData.studios.map((studio) => (
-        <p className="animeInformation-array">{studio.name}</p>
+        <p key={studio.name} className="animeInformation-array">{studio.name}</p>
       ))}
       </div>
       <p className="animeInfo-header">Genres:</p>
       <div className="animeInformation-array-flex">
       {storedData.genres.map((genre) => (
-        <p className="animeInformation-array">{genre.name}</p>
+        <p key={genre.name} className="animeInformation-array">{genre.name}</p>
       ))}
       </div>
       <p className="animeInfo-header">Synopsis:</p>

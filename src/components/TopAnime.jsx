@@ -14,6 +14,7 @@ function TopAnime() {
   const updateData = useZustand((state) => state.updateData)
   const updateDrawer = useZustand((state) => state.updateDrawerActive)
   const updatePagination = useZustand((state) => state.updatePagination)
+  const closeDrawer = useZustand((state) => state.closeDrawer)
 
   const {data,isError,isLoading,isSuccess} = useQuery({ queryKey: ['main', pagination], queryFn: () => useFetch(pagination), retry: 2})
 
@@ -21,15 +22,14 @@ function TopAnime() {
       updateData(data)
   },[data])
 
-
   return (
     <>
-    <Nav updateDrawer={updateDrawer} drawer={drawer} />
+    <Nav updateDrawer={updateDrawer} drawer={drawer} closeDrawer={closeDrawer} />
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     {
       isLoading ? <div style={{height: "100dvh"}}><h1>Loading......</h1> </div> :
       isError ? <Error /> :
-      storedData ? <Anime anime={storedData} pagination={pagination}  updatePagination={updatePagination} /> : null
+      isSuccess ? <Anime anime={storedData} pagination={pagination}  updatePagination={updatePagination} /> : null
     }
     <Footer />
     </>

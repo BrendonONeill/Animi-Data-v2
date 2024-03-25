@@ -1,9 +1,14 @@
-import React from 'react'
+import Card from './card'
+import Navbar from './Navbar'
+import { Link } from 'react-router-dom'
 
 function Loading() {
   return (
-    <div className='loading-container'>
-        <h2>Loading...</h2>
+    <div className="container">
+    <Navbar />
+    <div className='main-section'>
+    <h1>Loading...</h1>
+    </div>
     </div>
   )
 }

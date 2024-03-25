@@ -12,6 +12,7 @@
 :root {
   --main-colour: #B57AF0;
   --secondary-colour: #F09F7A;
+  --wide-bg: #f1c6b1;
   --backup-colour: #8F829B;
   --dark-purple: #5C3E7A;
   --white: #ffff;
@@ -448,6 +449,25 @@ footer a {
   color: white;
 }
 
+@media (min-width: 700px) {
+  nav {
+    padding-block: 1.3rem;
+  }
+
+  .sidebar {
+    width: 40%;
+  }
+
+  .card-grid {
+    padding-block: 7rem 2rem;
+    justify-content: center;
+  }
+
+  .animeInformation {
+    padding: 2rem;
+  }
+}
+
 
 
 
@@ -488,10 +508,15 @@ footer a {
   .searchBox {
     width: 20%;
     right: 0;
+    bottom: -68px;
   }
 
   .main-section {
     flex-basis: 60%;
+  }
+
+  .card-grid {
+    justify-content: flex-start;
   }
 
   .card {
@@ -560,4 +585,31 @@ footer a {
     border: 2px solid var(--secondary-colour);
   }
 
+}
+
+@media (min-width: 2000px) {
+
+  nav,
+  .container,
+  footer {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  nav {
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  body {
+    background-color: #b8b0d6;
+  }
+
+  .searchBox {
+    width: 25%;
+  }
+
+  .searchBox form {
+    width: 80%;
+  }
 }
