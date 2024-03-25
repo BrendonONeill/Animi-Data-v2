@@ -19,6 +19,7 @@ function Genre() {
   const updateData = useZustand((state) => state.updateData)
   const updateDrawer = useZustand((state) => state.updateDrawerActive)
   const updatePagination = useZustand((state) => state.updatePagination)
+  const closeDrawer = useZustand((state) => state.closeDrawer)
 
   const {data,isError,isLoading,isSuccess} = useQuery({ queryKey: ['genre', genre, pagination], queryFn: () => useFetchGenre(genre,pagination), retry: 2})
 
@@ -33,7 +34,7 @@ function Genre() {
   
   return (
     <>
-    <Nav updateDrawer={updateDrawer} drawer={drawer} />
+    <Nav updateDrawer={updateDrawer} drawer={drawer} closeDrawer={closeDrawer} />
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     <div className="container">
     <Navbar />

@@ -17,9 +17,13 @@ export const useZustand = create((set) => ({
   error : null,
   activeNav : "Top Anime",
   animeInformation : null,
+  searchBox : false,
   updatePagination: (pagination) => set(() => ({pagination: pagination})),
   updateData: (data) => set(() => ({data : data}) ),
   updateDrawerActive: () => set((state) =>({drawer: !state.drawer})),
   updateActiveNav: (active) => set(() => ({activeNav: active })),
   updateAnimeInformation: (animeInformation) => set(() => ({animeInformation: animeInformation})),
+  closeDrawer: () => set(() =>({drawer: false})),
+  updateSearch: () => set((state) =>({searchBox: !state.searchBox})),
+  closeSearch: () => set(() => ({searchBox: false}))
 }))
