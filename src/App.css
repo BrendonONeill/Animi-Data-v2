@@ -342,6 +342,14 @@ a {
   padding: 0.4rem 0.4rem;
 }
 
+.animeInfo-video {
+  margin: 2rem auto;
+  width: 300px;
+  height: 169px;
+  border-radius: 5px;
+  border: 2px solid var(--dark-purple);
+}
+
 
 
 .pagination-button {
@@ -449,6 +457,20 @@ footer a {
   color: white;
 }
 
+.error-loading {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.anime-form {
+  margin-top: 5rem;
+  background-color: var(--secondary-colour);
+}
+
 @media (min-width: 700px) {
   nav {
     padding-block: 1.3rem;
@@ -465,6 +487,11 @@ footer a {
 
   .animeInformation {
     padding: 2rem;
+  }
+
+  .animeInfo-video {
+    width: 600px;
+    height: 338px;
   }
 }
 
@@ -611,5 +638,10 @@ footer a {
 
   .searchBox form {
     width: 80%;
+  }
+
+  .animeInfo-video {
+    width: 550px;
+    height: 288px;
   }
 }

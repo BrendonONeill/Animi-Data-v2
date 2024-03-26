@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Card from './card'
 import Navbar from './Navbar'
 import { Link } from 'react-router-dom'
@@ -17,6 +16,21 @@ function Anime({anime, pagination, updatePagination}) {
     <div className='main-section'>
     {anime !== null ?
     <>
+    <form className='anime-form' action="">
+      <label htmlFor="">
+       Tv <input type="checkbox" name="TV" id="tv" />
+      </label>
+      <label htmlFor="">
+       Movie <input type="checkbox" name="TV" id="tv" />
+      </label>
+      <label htmlFor="">
+      OVA <input type="checkbox" name="TV" id="tv" />
+      </label>
+      <label htmlFor="">
+       Special <input type="checkbox" name="TV" id="tv" />
+      </label>
+      <input type="submit" value="Filter" />
+    </form>
     <div className='card-grid'>
       {anime?.data.map((data) => (
         <Link to={`anime-information/${data.mal_id}`} onClick={() => closeSearch() } key={data.mal_id} className='card-link'><Card data={data} /></Link>
