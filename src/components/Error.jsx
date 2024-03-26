@@ -1,9 +1,12 @@
-import React from 'react'
+import Navbar from './Navbar'
 
 function Error() {
   return (
-    <div>
-      <h2>There was an Error</h2>
+    <div className="container">
+    <Navbar />
+    <div className='main-section'>
+      <h1>Sorry there was an Error</h1>
+    </div>
     </div>
   )
 }

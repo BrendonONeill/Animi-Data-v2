@@ -71,6 +71,11 @@ function AnimeInformation() {
       </div>
       <p className="animeInfo-header">Synopsis:</p>
       <p>{storedData.synopsis}</p>
+
+      <p className="animeInfo-header">Trailer:</p>
+      <iframe className="animeInfo-video" allowFullScreen
+        src={storedData.trailer.embed_url.slice(0, -1) + "0"}>
+      </iframe>
       </div>
       </div>:
       null}

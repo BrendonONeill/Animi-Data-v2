@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom"
-import { useState, useEffect } from "react";
-import Navbar from './Navbar'
+import { useEffect } from "react";
 import Nav from './Nav';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 import { useFetchGenre } from "../useFetch";
 import  {useZustand} from '../context/Zustand';
 import { useQuery} from "@tanstack/react-query"
-import { Link } from "react-router-dom";
-import Card from './card'
+import Anime from './Anime';
+import Loading from "./Loading";
+
 
 function Genre() {
   const {genre} = useParams();
@@ -36,21 +36,11 @@ function Genre() {
     <>
     <Nav updateDrawer={updateDrawer} drawer={drawer} closeDrawer={closeDrawer} />
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
-    <div className="container">
-    <Navbar />
-    <div className='main-section'>
-    {storedData !== null ?
-    <>
-    <div className='card-grid'>
-      {storedData?.data.map((data) => (
-        <Link to={`../anime-information/${data.mal_id}`} key={data.mal_id}><Card data={data} /></Link>
-    ))}
-    </div>
-    <div className='pagination-section'><button className='pagination-button' onClick={() => paginationChange(pagination - 1)}>{pagination - 1}</button><p className='pagination-button pagination-main'>{pagination}</p><button className='pagination-button' onClick={() => paginationChange(pagination + 1)}>{pagination + 1}</button></div>
-    </>
-    : <><h1>No Data</h1></>}
-    </div>
-    </div>
+    {
+      isLoading ? <Loading /> :
+      isError ? <Error /> :
+      isSuccess ? <Anime anime={storedData} pagination={pagination}  updatePagination={updatePagination} /> : null
+    }
     <Footer />
     </>
   )
