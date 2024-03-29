@@ -1,4 +1,4 @@
-import Card from './card'
+import Card from './Card'
 import Navbar from './Navbar'
 import { Link } from 'react-router-dom'
 import  {useZustand} from '../context/Zustand';
