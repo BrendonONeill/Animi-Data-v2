@@ -459,7 +459,7 @@ footer a {
 
 .error-loading {
   height: 100vh;
-  width: 100%;
+  width: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -468,7 +468,51 @@ footer a {
 
 .anime-form {
   margin-top: 5rem;
-  background-color: var(--secondary-colour);
+  margin-inline: auto;
+  padding: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.submit-filter {
+  background-color: var(--dark-purple);
+  color: white;
+  padding: 0.6rem;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+}
+
+.anime-form label {
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.wavy {
+  animation-name: wavy;
+  animation-duration: 1.3s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+@keyframes wavy {
+  0% {
+    top: 0px;
+  }
+
+  50% {
+    top: -15px;
+  }
+
+  100% {
+    top: 0px;
+  }
 }
 
 @media (min-width: 700px) {
@@ -481,7 +525,7 @@ footer a {
   }
 
   .card-grid {
-    padding-block: 7rem 2rem;
+    padding-block: 1rem 2rem;
     justify-content: center;
   }
 
@@ -492,6 +536,10 @@ footer a {
   .animeInfo-video {
     width: 600px;
     height: 338px;
+  }
+
+  .anime-form {
+    width: 60%;
   }
 }
 
@@ -610,6 +658,10 @@ footer a {
 
   .footer-links:hover {
     border: 2px solid var(--secondary-colour);
+  }
+
+  .anime-form {
+    width: 50%;
   }
 
 }

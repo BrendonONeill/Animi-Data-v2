@@ -8,22 +8,26 @@ import fantasy from "../assets/fantasy.svg"
 import horror from "../assets/horror.svg"
 import romance from "../assets/romance.svg"
 import sliceOfLife from "../assets/slice.svg"
+import pop from "../assets/user.svg"
 
 export const useZustand = create((set) => ({
-  genre : [{id: 0, icon: top, name: "Top Anime", link: "/"},{ id: 1, icon: action, name: "Action",  link: "/Genre/1" },{id: 2, icon: adventure, name: "Adventure",  link: "/Genre/2"},{id:4, icon: comedy, name: "Comedy", link: "/Genre/4"},{id:8, icon: drama, name: "Drama" , link: "/Genre/8"},{ id:10, icon: fantasy, name: "Fantasy", link: "/Genre/10"},{ id:14, icon: horror, name: "Horror", link: "/Genre/14"},{ id:22, icon: romance, name: "Romance", link: "/Genre/22"},{ id:36, icon: sliceOfLife, name: "Slice of Life" ,  link: "/Genre/36"}],
+  genre : [{id: 0, icon: top, name: "Top Anime", link: "/"},{id: 94, icon: pop, name: "Popularity", link: "/Popularity/"},{ id: 1, icon: action, name: "Action",  link: "/Genre/1" },{id: 2, icon: adventure, name: "Adventure",  link: "/Genre/2"},{id:4, icon: comedy, name: "Comedy", link: "/Genre/4"},{id:8, icon: drama, name: "Drama" , link: "/Genre/8"},{ id:10, icon: fantasy, name: "Fantasy", link: "/Genre/10"},{ id:14, icon: horror, name: "Horror", link: "/Genre/14"},{ id:22, icon: romance, name: "Romance", link: "/Genre/22"},{ id:36, icon: sliceOfLife, name: "Slice of Life" ,  link: "/Genre/36"}],
   pagination : 1,
   data : null,
   drawer : false,
   error : null,
   activeNav : "Top Anime",
+  animeType: "",
   animeInformation : null,
   searchBox : false,
   updatePagination: (pagination) => set(() => ({pagination: pagination})),
   updateData: (data) => set(() => ({data : data}) ),
+  updateType: (type) => set(() => ({animeType : type})),
   updateDrawerActive: () => set((state) =>({drawer: !state.drawer})),
   updateActiveNav: (active) => set(() => ({activeNav: active })),
   updateAnimeInformation: (animeInformation) => set(() => ({animeInformation: animeInformation})),
   closeDrawer: () => set(() =>({drawer: false})),
   updateSearch: () => set((state) =>({searchBox: !state.searchBox})),
-  closeSearch: () => set(() => ({searchBox: false}))
+  closeSearch: () => set(() => ({searchBox: false})),
+  resetType: () => set(() => ({animeType: ""}))
 }))

@@ -9,6 +9,7 @@ function Sidebar({updateDrawer, drawer}) {
     const updateActiveNav = useZustand((state) => state.updateActiveNav)
     const updatePagination = useZustand((state) => state.updatePagination)
     const closeDrawer = useZustand((state) => state.closeDrawer)
+    const resetType = useZustand((state) => state.resetType)
   return (
     <div className={drawer ? "sidebar-black-card sidebar-black-card-active" : "sidebar-black-card sidebar-black-card-closed"} onClick={() => closeDrawer()}>
         <div className={drawer ? "sidebar sidebar-active" : "sidebar sidebar-closed"}>
@@ -18,7 +19,7 @@ function Sidebar({updateDrawer, drawer}) {
         <div>
         {
             genre.map((g) => (
-                <NavLink to={g.link} key={g.id}><button onClick={() => {updateActiveNav(g.name), updatePagination(1),  closeDrawer()}}  className={g.name === active ? "genre genre-active" : "genre"}><img className="sidebar-icons" src={g.icon} width={25} height={25} alt="" />{g.name}</button> </NavLink>
+                <NavLink to={g.link} key={g.id}><button onClick={() => {updateActiveNav(g.name), updatePagination(1),  closeDrawer(), resetType()}}  className={g.name === active ? "genre genre-active" : "genre"}><img className="sidebar-icons" src={g.icon} width={25} height={25} alt="" />{g.name}</button> </NavLink>
             ))
         }
         </div>

@@ -5,7 +5,7 @@ function Loading() {
     <div className="container">
     <Navbar />
     <div className='error-loading'>
-    <h1>Loading...</h1>
+    <h1 id='loading'>Loading...</h1>
     </div>
     </div>
   )
