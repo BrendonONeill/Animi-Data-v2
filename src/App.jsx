@@ -5,12 +5,17 @@ import TopAnime from './components/TopAnime'
 import Genre from './components/Genre'
 import AnimeInformation from './components/AnimeInformation'
 import SearchAnime from './components/SearchAnime'
+import Popularity from './components/Popularity'
 
 export default function App() {
     const router = createBrowserRouter([
       { 
         path: "/",
         element: <TopAnime />
+      },
+      { 
+        path: "Popularity/",
+        element: <Popularity />
       },
       {
         path: "/genre/:genre",

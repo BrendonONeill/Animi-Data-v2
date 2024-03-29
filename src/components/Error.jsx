@@ -1,11 +1,11 @@
 import Navbar from './Navbar'
 
-function Error() {
+function Error({error}) {
   return (
     <div className="container">
     <Navbar />
-    <div className='main-section'>
-      <h1>Sorry there was an Error</h1>
+    <div className='error-loading'>
+      <h1>{error}</h1>
     </div>
     </div>
   )

@@ -8,6 +8,7 @@ import  {useZustand} from '../context/Zustand';
 import { useQuery} from "@tanstack/react-query"
 import Anime from './Anime';
 import Loading from "./Loading";
+import Error from "./Error";
 
 
 function Genre() {
@@ -15,13 +16,14 @@ function Genre() {
 
   const pagination = useZustand((state) => state.pagination)
   const storedData = useZustand((state) => state.data)
+  const animeType = useZustand((state) => state.animeType)
   const drawer = useZustand((state) => state.drawer)
   const updateData = useZustand((state) => state.updateData)
   const updateDrawer = useZustand((state) => state.updateDrawerActive)
   const updatePagination = useZustand((state) => state.updatePagination)
   const closeDrawer = useZustand((state) => state.closeDrawer)
 
-  const {data,isError,isLoading,isSuccess} = useQuery({ queryKey: ['genre', genre, pagination], queryFn: () => useFetchGenre(genre,pagination), retry: 2})
+  const {data,isError,isLoading,isSuccess, error} = useQuery({ queryKey: ['genre', genre, pagination, animeType], queryFn: () => useFetchGenre(genre,pagination,animeType), retry: 2})
 
   const paginationChange = (number) => {
     updatePagination(number)
@@ -38,7 +40,7 @@ function Genre() {
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     {
       isLoading ? <Loading /> :
-      isError ? <Error /> :
+      isError ? <Error error={error.message} /> :
       isSuccess ? <Anime anime={storedData} pagination={pagination}  updatePagination={updatePagination} /> : null
     }
     <Footer />
