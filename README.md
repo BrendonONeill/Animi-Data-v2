@@ -25,3 +25,4 @@ This is a website where users can look up anime and see what is considered the b
 ## Bugs
 - Fix some animation problems
 - Need to fix slice bug on video playback
+- anime information UI looks off the screen
