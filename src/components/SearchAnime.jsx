@@ -8,7 +8,7 @@ import { useFetchSearch } from "../useFetch";
 import  {useZustand} from '../context/Zustand';
 import { useQuery} from "@tanstack/react-query"
 import { Link } from "react-router-dom";
-import Card from './card'
+import Card from './Card'
 
 
 function SearchAnime() {
