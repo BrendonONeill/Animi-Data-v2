@@ -4,9 +4,11 @@ This is a website where users can look up anime and see what is considered the b
 
 ## Features
 - View anime by top-rated
+- View anime by popularity
 - View anime by genre
 - Search anime by name or word
 - Look up more information on animes
+- Filter by media type 
 
 
 ## Working on
