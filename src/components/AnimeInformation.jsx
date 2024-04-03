@@ -26,6 +26,7 @@ function AnimeInformation() {
 
   return (
     <>
+    {console.log(data)}
     <Nav updateDrawer={updateDrawer} drawer={drawer} />
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     <div className="container">
@@ -72,12 +73,15 @@ function AnimeInformation() {
       <p className="animeInfo-header">Synopsis:</p>
       <p>{storedData.synopsis}</p>
 
-      <p className="animeInfo-header">Trailer:</p>
+      
       {
-        storedData?.trailer ?
+        storedData?.trailer?.embed_url ?
+        <>
+        <p className="animeInfo-header">Trailer:</p>
         <iframe className="animeInfo-video" allowFullScreen
-        src={storedData.trailer.embed_url.slice(0, -1) + "0"}>
-      </iframe> : null
+        src={storedData.trailer?.embed_url.slice(0, -1) + "0"}>
+        </iframe> </>
+      : null
       }
       </div>
       </div>:
