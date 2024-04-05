@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 import Navbar from './Navbar'
 import Nav from './Nav';
@@ -7,9 +7,11 @@ import Sidebar from './Sidebar';
 import { useFetchAnimeInformation } from "../useFetch";
 import  {useZustand} from '../context/Zustand';
 import { useQuery} from "@tanstack/react-query"
+import back from "../assets/back.svg"
 
 function AnimeInformation() {
   const {id} = useParams();
+  const navigate = useNavigate()
 
   const storedData = useZustand((state) => state.animeInformation)
   const drawer = useZustand((state) => state.drawer)
@@ -17,6 +19,7 @@ function AnimeInformation() {
   const updateDrawer = useZustand((state) => state.updateDrawerActive)
 
   const {data,isError,isLoading,isSuccess} = useQuery({ queryKey: ['anime', id], queryFn: () => useFetchAnimeInformation(id), retry: 2})
+  const design = {backgroundImage:`linear-gradient(to bottom, rgba(245, 246, 252, 0.70), rgba(255, 255, 255, 1)), url('${storedData?.images.webp.large_image_url}')`}
 
 
 
@@ -26,7 +29,7 @@ function AnimeInformation() {
 
   return (
     <>
-    {console.log(data)}
+    {console.log(storedData)}
     <Nav updateDrawer={updateDrawer} drawer={drawer} />
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     <div className="container">
@@ -34,12 +37,13 @@ function AnimeInformation() {
     <div className='main-section'>
     
     <div className="animeInformation-container">
+      <button className="back-button" onClick={() => navigate(-1)}><img  src={back} width={40} height={40} alt="" /></button>
       {storedData ?
-      <div className="animeInformation">
+      <div style={design} className="animeInformation">
       
       <img width={240} height={262} src={storedData?.images.webp.image_url} alt="" />
-      <p>{storedData.title}</p>
-      <p>{storedData.title_japanese}</p>
+      <p className="animeinformation-title">{storedData.title}</p>
+      <p className="animeinformation-title">{storedData.title_japanese}</p>
 
       <div className="animeInformation-grid">
         <div className="animeInformation-grid-header"><p>Score</p></div>
