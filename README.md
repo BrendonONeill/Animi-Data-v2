@@ -12,7 +12,7 @@ This is a website where users can look up anime and see what is considered the b
 
 
 ## Working on
-- Logo Design
+- Logo Design - just needs cleaning up
 - Cleaning up UI
 - Cleaning up error handling
 - Adding a tooltip to hovered cards to give brief info on anime
