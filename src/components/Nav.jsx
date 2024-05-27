@@ -3,6 +3,7 @@ import burger from "../assets/burger.svg"
 import search from "../assets/search.svg"
 import { useNavigate, Link } from "react-router-dom"
 import  {useZustand} from '../context/Zustand';
+import logo from "../assets/ani_logo.webp"
 
 function Nav({updateDrawer, drawer, closeDrawer}) {
   const [searchValue, setSearchValue] = useState("")
@@ -28,7 +29,7 @@ function Nav({updateDrawer, drawer, closeDrawer}) {
         <button className="nav-burger-button" onClick={() => {updateDrawer(), closeSearch()}}><img src={burger} width={30} height={30}  alt="" /></button>
         </div>
         <div className="nav-logo">
-        <Link to={"../"}><h1 onClick={() => updateActiveNav("Top Anime") }>Animi-Data</h1></Link>
+        <Link to={"../"}><img src={logo} width={120}  onClick={() => updateActiveNav("Top Anime") }></img></Link>
         </div>
         <div className="nav-search">
             <button onClick={() => {updateSearch(), closeDrawer()}}><img src={search} width={30} height={30}  alt="" /></button>

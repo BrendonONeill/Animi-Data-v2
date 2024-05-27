@@ -29,7 +29,6 @@ function AnimeInformation() {
 
   return (
     <>
-    {console.log(storedData)}
     <Nav updateDrawer={updateDrawer} drawer={drawer} />
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     <div className="container">
@@ -49,15 +48,15 @@ function AnimeInformation() {
         <div className="animeInformation-grid-header"><p>Score</p></div>
         <div className="animeInformation-grid-header"><p>Ranked</p></div>
         <div className="animeInformation-grid-header"><p>Popularity</p></div>
-        <div><p>{storedData.score}</p></div>
-        <div><p>{storedData.rank}</p></div>
-        <div><p>{storedData.popularity}</p></div>
+        <div><p>{storedData.score ? storedData.score : "N/A"}</p></div>
+        <div><p>{storedData.rank ? storedData.rank : "N/A"}</p></div>
+        <div><p>{storedData.popularity ? storedData.popularity : "N/A"}</p></div>
         <div className="animeInformation-grid-header"><p>Type</p></div>
         <div className="animeInformation-grid-header"><p>Episodes</p></div>
         <div className="animeInformation-grid-header"><p>Year</p></div>
-        <div><p>{storedData.type}</p></div>
-        <div><p>{storedData.episodes}</p></div>
-        <div><p>{storedData.year}</p></div>
+        <div><p>{storedData.type ? storedData.type : "N/A"}</p></div>
+        <div><p>{storedData.episodes ? storedData.episodes : "N/A"}</p></div>
+        <div><p>{ storedData.year ? storedData.year  : "N/A"}</p></div>
       </div>
 
       <div className="animeInformation-grid-text">
