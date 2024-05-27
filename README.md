@@ -12,10 +12,8 @@ This is a website where users can look up anime and see what is considered the b
 
 
 ## Working on
-- Logo Design - just needs cleaning up
 - Cleaning up UI
 - Cleaning up error handling
-- Adding a tooltip to hovered cards to give brief info on anime
 - Animating the loading screen
 - I'm going to change the laptop view to be 5 cards per row just looks cleaner.
 
@@ -24,7 +22,3 @@ This is a website where users can look up anime and see what is considered the b
 - Added Filter to select a type of media
 - Added a new section Popularity
 
-
-## Bugs
-- Fix some animation problems
-- Fix UI on information card on phones too much image displayed in background. 
