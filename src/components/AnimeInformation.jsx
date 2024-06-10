@@ -8,6 +8,7 @@ import { useFetchAnimeInformation } from "../useFetch";
 import  {useZustand} from '../context/Zustand';
 import { useQuery} from "@tanstack/react-query"
 import back from "../assets/back.svg"
+import Loading from "./Loading";
 
 function AnimeInformation() {
   const {id} = useParams();
@@ -36,8 +37,9 @@ function AnimeInformation() {
     <div className='main-section'>
     
     <div className="animeInformation-container">
+    {storedData ?
+    <>
       <button className="back-button" onClick={() => navigate(-1)}><img  src={back} width={40} height={40} alt="" /></button>
-      {storedData ?
       <div style={design} className="animeInformation">
       
       <img width={240} height={262} src={storedData?.images.webp.image_url} alt="" />
@@ -87,9 +89,9 @@ function AnimeInformation() {
       : null
       }
       </div>
-      </div>:
-      null}
-
+      </div>
+      </>
+      : <Loading />}
     </div>
 
     </div>

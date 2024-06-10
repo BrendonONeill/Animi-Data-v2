@@ -276,6 +276,7 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .back-button {
@@ -484,9 +485,19 @@ footer a {
   height: 100vh;
   width: 100%;
   display: flex;
+  flex-flow: column;
   align-items: center;
   justify-content: center;
+}
 
+.loading-ring {
+  animation: rotateSpinner 2200ms linear infinite;
+}
+
+@keyframes rotateSpinner {
+  to {
+    transform: rotate(-360deg);
+  }
 }
 
 .anime-form {
@@ -743,7 +754,7 @@ footer a {
   }
 
   .error-loading {
-    width: 60%;
+    width: 100%;
   }
 
 }
@@ -757,6 +768,10 @@ footer a {
     margin: 0 auto;
   }
 
+  .container {
+    gap: 5rem;
+  }
+
   nav {
     right: 50%;
     transform: translateX(50%);
@@ -768,6 +783,14 @@ footer a {
 
   .searchBox {
     width: 25%;
+  }
+
+  .main-section {
+    flex-basis: 70%;
+  }
+
+  .animeInformation-container {
+    width: 95%;
   }
 
   .searchBox form {
