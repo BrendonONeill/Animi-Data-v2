@@ -494,6 +494,17 @@ footer a {
   animation: rotateSpinner 2200ms linear infinite;
 }
 
+.error-button {
+  background-color: var(--dark-purple);
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
 @keyframes rotateSpinner {
   to {
     transform: rotate(-360deg);
@@ -633,6 +644,11 @@ footer a {
     width: 96%;
     margin: 0 auto;
   }
+
+  #grid-spacer {
+    margin-top: 9.2rem;
+  }
+
 
   .card {
     border: var(--dark-white) 2px solid;
@@ -801,4 +817,6 @@ footer a {
     width: 550px;
     height: 288px;
   }
+
+
 }

@@ -30,6 +30,7 @@ function Genre() {
   }
 
   useEffect(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       updateData(data)
   },[data])
 
@@ -40,7 +41,7 @@ function Genre() {
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     {
       isLoading ? <Loading /> :
-      isError ? <Error error={error.message} /> :
+      isError ? <Error error={"Oops there was an error"} /> :
       isSuccess ? <Anime anime={storedData} pagination={pagination}  updatePagination={updatePagination} /> : null
     }
     <Footer />

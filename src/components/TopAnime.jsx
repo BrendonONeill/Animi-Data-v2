@@ -22,6 +22,7 @@ function TopAnime() {
   const {data,isError,isLoading,isSuccess, error} = useQuery({ queryKey: ['main', pagination, animeType], queryFn: () => useFetch(pagination, animeType), retry: 2})
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
       updateData(data)
   },[data])
 
@@ -31,7 +32,7 @@ function TopAnime() {
     <Sidebar updateDrawer={updateDrawer} drawer={drawer} />
     {
       isLoading ? <Loading /> :
-      isError ? <Error error={error.message} /> :
+      isError ? <Error error={"Oops there was an error"} /> :
       isSuccess ? <Anime anime={storedData} pagination={pagination}  updatePagination={updatePagination} /> : null
     }
     <Footer />

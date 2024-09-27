@@ -25,6 +25,7 @@ function AnimeInformation() {
 
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     updateData(data?.data)
   },[data])
 

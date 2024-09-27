@@ -54,7 +54,6 @@ export async function useFetchGenre(genre,pagination,animeType) {
              url = `https://api.jikan.moe/v4/anime?genres=${genre}&page=${pagination}&type=${animeType}&sfw&order_by=score&sort=desc`
         }
         const res = await fetch(url)
-        console.log(res)
        if(res.ok)
        {
         return res.json()
