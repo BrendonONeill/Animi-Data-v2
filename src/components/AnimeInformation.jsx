@@ -21,6 +21,7 @@ function AnimeInformation() {
 
   const {data,isError,isLoading,isSuccess} = useQuery({ queryKey: ['anime', id], queryFn: () => useFetchAnimeInformation(id), retry: 2})
   const design = {backgroundImage:`linear-gradient(to bottom, rgba(245, 246, 252, 0.70), rgba(255, 255, 255, 1)), url('${storedData?.images.webp.large_image_url}')`}
+  const mobileDesign = {backgroundImage:`linear-gradient(to bottom, rgba(245, 246, 252, 0.70), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1), rgba(255, 255, 255, 1)), url('${storedData?.images.webp.large_image_url}')`}
 
 
 
@@ -41,7 +42,7 @@ function AnimeInformation() {
     {storedData ?
     <>
       <button className="back-button" onClick={() => navigate(-1)}><img  src={back} width={40} height={40} alt="" /></button>
-      <div style={design} className="animeInformation">
+      <div style={window.innerWidth > 900 ? design:mobileDesign} className="animeInformation">
       
       <img width={240} height={262} src={storedData?.images.webp.image_url} alt="" />
       <p className="animeinformation-title">{storedData.title}</p>
